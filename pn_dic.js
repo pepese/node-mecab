@@ -19,7 +19,7 @@ const setUp = () => {
       rl.on('line', (line) => {
         const word = line.split(":");
         i++;
-        console.log("word[0]: " + word[0] + ", word[2]: " + word[2] + " / " + i);
+        //console.log("word[0]: " + word[0] + ", word[2]: " + word[2] + " / " + i);
         if(word[2] == "名詞") {
           noun.push(word);
         } else if(word[2] == "動詞") {
@@ -31,7 +31,7 @@ const setUp = () => {
         } else if(word[2] == "助動詞") {
           auxiliary.push(word);
         } else {
-          console.log(word[2]);
+          console.log(word[2] + " / " + i);
         }
       }).on('pause', () => {
         console.log("Pause.");
@@ -49,6 +49,7 @@ const setUp = () => {
         setUpEndFlag = true;
       });
     }
+    return;
   });
 };
 // setUp().then(() => {
@@ -68,8 +69,8 @@ const match = (word, part) => {
 }
 
 const calc = (morpheme_arr) => {
-  setUp().then(() => {
-    console.log(adjective);
+  return setUp().then(() => {
+    console.log("adjective: " + adjective);
   }).then(() => {
     let score = 0;
     for(let i=0; i<morpheme_arr.length; i++) {

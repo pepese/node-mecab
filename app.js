@@ -6,5 +6,5 @@ let input = process.argv[2];
 mecab.parse(input,(err,result)=>{
   if(err){
   }
-  console.log(calc(result));
+  calc(result).then((value) => {console.log(value);});
 });
